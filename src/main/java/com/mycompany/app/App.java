@@ -24,10 +24,75 @@ public class App
 
         get("/", (req, res) -> "Hello, World");
 
+        post("/computeUnion", (req, res) -> {
+            String input1 = req.queryParams("input1");
+            java.util.Scanner sc1 = new java.util.Scanner(input1);
+            sc1.useDelimiter("[;\r\n]+");
+            java.util.ArrayList<Integer> inputList1 = new java.util.ArrayList<>();
+            while (sc1.hasNext())
+            {
+                int value = Integer.parseInt(sc1.next().replaceAll("\\s",""));
+                inputList1.add(value);
+            }
+
+
+            String input2 = req.queryParams("input2");
+            sc1 = new java.util.Scanner(input2);
+            java.util.ArrayList<Integer> inputList2 = new java.util.ArrayList<>();
+            while (sc1.hasNext())
+            {
+                int value = Integer.parseInt(sc1.next().replaceAll("\\s",""));
+                inputList2.add(value);
+            }
+
+
+            String input3 = req.queryParams("input3");
+            sc1 = new java.util.Scanner(input3);
+            java.util.ArrayList<Integer> inputList3 = new java.util.ArrayList<>();
+            while (sc1.hasNext())
+            {
+                int value = Integer.parseInt(sc1.next().replaceAll("\\s",""));
+                inputList3.add(value);
+            }
+
+
+            String input4 = req.queryParams("input4");
+            sc1 = new java.util.Scanner(input4);
+            java.util.ArrayList<Integer> inputList4 = new java.util.ArrayList<>();
+            while (sc1.hasNext())
+            {
+                int value = Integer.parseInt(sc1.next().replaceAll("\\s",""));
+                inputList4.add(value);
+            }
+            ArrayList<Integer> totalArray = App.arrayUnion(inputList1, inputList2, inputList3, inputList4);
+            Map map1 = new HashMap();
+            map1.put("result", totalArray);
+            return new ModelAndView(map1, "computeUnion.mustache");
+        },new MustacheTemplateEngine());
+
+        get("/computeUnion",
+            (rq, rs) -> {
+              Map map1 = new HashMap();
+              map1.put("result", "not computed yet!");
+              return new ModelAndView(map1, "compute.mustache");
+            },
+            new MustacheTemplateEngine());
+
+
+
+
+
+
+
+
+
+
+
+
         post("/compute", (req, res) -> {
           System.out.println(req.queryParams("input1"));
           System.out.println(req.queryParams("input2"));
-        String input1 = req.queryParams("input1");
+          String input1 = req.queryParams("input1");                   //String input1 =...
           java.util.Scanner sc1 = new java.util.Scanner(input1);
           sc1.useDelimiter("[;\r\n]+");
           java.util.ArrayList<Integer> inputList = new java.util.ArrayList<>();
@@ -39,7 +104,7 @@ public class App
           System.out.println(inputList);
 
 
-          String input2 = req.queryParams("input2").replaceAll("\\s","");
+          String input2 = req.queryParams("input2").replaceAll("\\s",""); // \s means whitespace
           int input2AsInt = Integer.parseInt(input2);
 
           boolean result = App.search(inputList, input2AsInt);
@@ -58,6 +123,20 @@ public class App
             },
             new MustacheTemplateEngine());
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     static int getHerokuAssignedPort() {
         ProcessBuilder processBuilder = new ProcessBuilder();
@@ -87,10 +166,9 @@ public class App
     }
 
 
-    public static ArrayList<Integer> arrayUnion(int []a, int []b, int []c, int []d){
-        int temp;
+    public static ArrayList<Integer> arrayUnion(ArrayList<Integer>a, ArrayList<Integer>b, ArrayList<Integer>c, ArrayList<Integer>d){
         ArrayList<Integer> arrList = new ArrayList<Integer>();
-        for(int i = 0; i < a.length; i++){
+   /*     for(int i = 0; i < a.length; i++){
             temp = a[i];
             if(!arrList.contains(temp))
                 arrList.add(temp);
@@ -112,7 +190,30 @@ public class App
             temp = d[i];
             if(!arrList.contains(temp))
                 arrList.add(temp);
-        }
+       }
+    */
+        for(int e : a)
+            if(!arrList.contains(e))
+                arrList.add(e);
+
+        for(int e : b)
+            if(!arrList.contains(e))
+                arrList.add(e);
+       
+       for(int e : c)
+            if(!arrList.contains(e))
+                arrList.add(e);
+       
+       for(int e : d)
+            if(!arrList.contains(e))
+                arrList.add(e);
+       
+       
+
+
+
+
+
         return arrList;
     }
 
@@ -124,7 +225,7 @@ public class App
         return false;
     }
 
-    
+
 }
 
 
