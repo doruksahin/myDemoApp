@@ -67,7 +67,11 @@ public class App
                 int value = Integer.parseInt(sc1.next().replaceAll("\\s",""));
                 inputList4.add(value);
             }
-            ArrayList<Integer> result = App.arrayUnion(inputList1, inputList2, inputList3, inputList4);
+            ArrayList<Integer> resultList = App.arrayUnion(inputList1, inputList2, inputList3, inputList4);
+            String result = "";
+            for(int e : resultList)
+                result = result + e + " ";
+            
             Map map1 = new HashMap();
             map1.put("result", result);
             return new ModelAndView(map1, "computeUnion.mustache");
