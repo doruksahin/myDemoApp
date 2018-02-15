@@ -38,6 +38,7 @@ public class App
 
             String input2 = req.queryParams("input2");
             sc1 = new java.util.Scanner(input2);
+            sc1.useDelimiter("[;\r\n]+");
             java.util.ArrayList<Integer> inputList2 = new java.util.ArrayList<>();
             while (sc1.hasNext())
             {
@@ -48,6 +49,7 @@ public class App
 
             String input3 = req.queryParams("input3");
             sc1 = new java.util.Scanner(input3);
+            sc1.useDelimiter("[;\r\n]+");
             java.util.ArrayList<Integer> inputList3 = new java.util.ArrayList<>();
             while (sc1.hasNext())
             {
@@ -58,15 +60,16 @@ public class App
 
             String input4 = req.queryParams("input4");
             sc1 = new java.util.Scanner(input4);
+            sc1.useDelimiter("[;\r\n]+");
             java.util.ArrayList<Integer> inputList4 = new java.util.ArrayList<>();
             while (sc1.hasNext())
             {
                 int value = Integer.parseInt(sc1.next().replaceAll("\\s",""));
                 inputList4.add(value);
             }
-            ArrayList<Integer> totalArray = App.arrayUnion(inputList1, inputList2, inputList3, inputList4);
+            ArrayList<Integer> result = App.arrayUnion(inputList1, inputList2, inputList3, inputList4);
             Map map1 = new HashMap();
-            map1.put("result", totalArray);
+            map1.put("result", result);
             return new ModelAndView(map1, "computeUnion.mustache");
         },new MustacheTemplateEngine());
 
