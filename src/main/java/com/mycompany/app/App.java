@@ -74,7 +74,7 @@ public class App
             (rq, rs) -> {
               Map map1 = new HashMap();
               map1.put("result", "not computed yet!");
-              return new ModelAndView(map1, "compute.mustache");
+              return new ModelAndView(map1, "computeUnion.mustache");
             },
             new MustacheTemplateEngine());
 
