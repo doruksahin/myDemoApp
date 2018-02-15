@@ -17,15 +17,7 @@ import spark.template.mustache.MustacheTemplateEngine;
  */
 public class App
 {
-    public static boolean search(ArrayList<Integer> array, int e) {
-      System.out.println("inside search");
-      if (array == null) return false;
-
-      for (int elt : array) {
-        if (elt == e) return true;
-      }
-      return false;
-    }
+    
 
     public static void main(String[] args) {
         port(getHerokuAssignedPort());
@@ -74,6 +66,65 @@ public class App
         }
         return 4567; //return default port if heroku-port isn't set (i.e. on localhost)
     }
+
+
+
+
+
+
+
+
+
+
+    public static boolean search(ArrayList<Integer> array, int e) {
+      System.out.println("inside search");
+      if (array == null) return false;
+
+      for (int elt : array) {
+        if (elt == e) return true;
+      }
+      return false;
+    }
+
+
+    public static ArrayList<Integer> arrayUnion(int []a, int []b, int []c, int []d){
+        int temp;
+        ArrayList<Integer> arrList = new ArrayList<Integer>();
+        for(int i = 0; i < a.length; i++){
+            temp = a[i];
+            if(!arrList.contains(temp))
+                arrList.add(temp);
+        }
+
+        for(int i = 0; i < b.length; i++){
+            temp = b[i];
+            if(!arrList.contains(temp))
+                arrList.add(temp);
+        }
+
+        for(int i = 0; i < c.length; i++){
+            temp = c[i];
+            if(!arrList.contains(temp))
+                arrList.add(temp);
+        }
+
+        for(int i = 0; i < d.length; i++){
+            temp = d[i];
+            if(!arrList.contains(temp))
+                arrList.add(temp);
+        }
+        return arrList;
+    }
+
+
+    public static boolean equals(int []a, int []b){
+        for(int i = 0; i < a.length; i++)
+            if(a[i] == b[i])
+                return true;
+        return false;
+    }
+
+    
 }
 
 
