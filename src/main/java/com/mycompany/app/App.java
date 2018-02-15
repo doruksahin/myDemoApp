@@ -25,6 +25,11 @@ public class App
         get("/", (req, res) -> "Hello, World");
 
         post("/computeUnion", (req, res) -> {
+            System.out.println(req.queryParams("input1"));
+            System.out.println(req.queryParams("input2"));
+            System.out.println(req.queryParams("input3"));
+            System.out.println(req.queryParams("input4"));
+            
             String input1 = req.queryParams("input1");
             java.util.Scanner sc1 = new java.util.Scanner(input1);
             sc1.useDelimiter("[;\r\n]+");
@@ -71,7 +76,7 @@ public class App
             String result = "";
             for(int e : resultList)
                 result = result + e + " ";
-            
+
             Map map1 = new HashMap();
             map1.put("result", result);
             return new ModelAndView(map1, "computeUnion.mustache");
