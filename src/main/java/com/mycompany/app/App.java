@@ -22,7 +22,16 @@ public class App
     public static void main(String[] args) {
         port(getHerokuAssignedPort());
 
-        get("/", (req, res) -> "Hello, World");
+        //get("/", (req, res) -> "Hello, World");
+
+        get("/",
+            (rq, rs) -> {
+              Map map = new HashMap();
+              map.put("", "");
+              return new ModelAndView(map, "main.mustache");
+            },
+            new MustacheTemplateEngine());
+
 
         post("/computeUnion", (req, res) -> {
             System.out.println(req.queryParams("input1"));
