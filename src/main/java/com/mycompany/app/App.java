@@ -189,55 +189,29 @@ public class App
 
     public static ArrayList<Integer> arrayUnion(ArrayList<Integer>a, ArrayList<Integer>b, ArrayList<Integer>c, ArrayList<Integer>d){
         ArrayList<Integer> arrList = new ArrayList<Integer>();
-   /*     for(int i = 0; i < a.length; i++){
-            temp = a[i];
-            if(!arrList.contains(temp))
-                arrList.add(temp);
-        }
-
-        for(int i = 0; i < b.length; i++){
-            temp = b[i];
-            if(!arrList.contains(temp))
-                arrList.add(temp);
-        }
-
-        for(int i = 0; i < c.length; i++){
-            temp = c[i];
-            if(!arrList.contains(temp))
-                arrList.add(temp);
-        }
-
-        for(int i = 0; i < d.length; i++){
-            temp = d[i];
-            if(!arrList.contains(temp))
-                arrList.add(temp);
-       }
-    */
-        for(int e : a)
-            if(!arrList.contains(e))
-                arrList.add(e);
-
-        for(int e : b)
-            if(!arrList.contains(e))
-                arrList.add(e);
+  
+        if(a != null)
+            for(int e : a)
+                if(!arrList.contains(e))
+                    arrList.add(e);
+        if(b != null)
+            for(int e : b)
+                if(!arrList.contains(e))
+                    arrList.add(e);
+        if(c != null)
+            for(int e : c)
+                if(!arrList.contains(e))
+                    arrList.add(e);
+        if(d != null)
+            for(int e : d)
+                if(!arrList.contains(e))
+                    arrList.add(e);
        
-       for(int e : c)
-            if(!arrList.contains(e))
-                arrList.add(e);
-       
-       for(int e : d)
-            if(!arrList.contains(e))
-                arrList.add(e);
-       
-       
-
-
-
-
 
         return arrList;
     }
 
+    /* Garbage code.
 
     public static boolean equals(int []a, int []b){
         for(int i = 0; i < a.length; i++)
@@ -246,6 +220,7 @@ public class App
         return false;
     }
 
+    */
 
 }
 
